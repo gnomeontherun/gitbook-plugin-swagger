@@ -1,0 +1,55 @@
+<div class="swagger">
+  <h2><%= api.info.title %></h2>
+  <h6><%= api.info.description %></h6>
+
+  <ul>
+    <%
+      var row = 'even';
+      for (var path in api.paths) {
+        var methods = api.paths[path];
+        for (var method in methods) {
+          var endpoint = methods[method];
+          row = (row == 'even') ? 'odd' : 'even'; 
+    %>
+    <li class="<%= row %>">
+      <h3 class="summary"><%= endpoint.summary %></h3> 
+      <h4 class="path"><span class="method <%= method %>"><%= method.toUpperCase() %></span><%= path %></h4>
+      <p><%= endpoint.description %></p>
+      <% if (endpoint.consumes && endpoint.consumes.legnth) { %>
+      <p>Accepts: <%= endpoint.consumes.join(', ')%> | Produces: <%= endpoint.produces.join(', ') %></p>
+      <% } %>
+      
+      <h5>Parameters</h5>
+      <% if (endpoint.parameters.length) { %>
+      <ul>
+        <% 
+          for (var i = 0; i < endpoint.parameters.length; i++) {
+            var parameter = endpoint.parameters[i];
+        %>
+        <li><%= parameter.name %></li>
+        <% } %>
+      </ul>
+      <% } else { %>
+        <p>There are no parameters</p>
+      <% } %>
+
+      <h5>Responses</h5>
+      <% if (endpoint.responses.length) { %>
+      <ul>
+        <% 
+          for (var code in endpoint.responses) {
+            var response = endpoint.responses[code];
+        %>
+        <li>
+          <p><%= code %> <%= response.description %></p>
+        </li>
+        <% } %>
+      </ul>
+      <% } else { %>
+        <p>There are no responses</p>
+      <% } %>
+    </li>
+      <% } %>
+    <% } %>
+  </ul>
+</div>
