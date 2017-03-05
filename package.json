@@ -30,7 +30,7 @@
     }
   },
   "dependencies": {
-    "bootprint": "^0.8.5",
-    "bootprint-swagger": "^0.13.1"
+    "bootprint": "^1.0.0",
+    "bootprint-swagger": "^1.0.1"
   }
 }
