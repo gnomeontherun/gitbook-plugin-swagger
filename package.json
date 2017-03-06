@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-swagger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A plugin to consume Swagger files into a Gitbook",
   "main": "index.js",
   "repository": {
