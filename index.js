@@ -24,7 +24,7 @@ module.exports = {
 
       // Replace if tag is found
       if (definition !== null) {
-        page.content = swaggers[definition[1]];
+         page.content = page.content.replace(regex, swaggers[definition[1]]);
       }
       return page;
     },
